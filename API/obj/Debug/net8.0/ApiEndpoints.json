@@ -11,22 +11,6 @@
   },
   {
     "ContainingType": "API.Controllers.TaskController",
-    "Method": "CreateTask",
-    "RelativePath": "Task",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "task",
-        "Type": "API.Models.Task",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "API.Controllers.TaskController",
     "Method": "GetTaskById",
     "RelativePath": "Task/{id}",
     "HttpMethod": "GET",
@@ -36,6 +20,38 @@
       {
         "Name": "id",
         "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.TaskController",
+    "Method": "CreateTask",
+    "RelativePath": "Task/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "task",
+        "Type": "API.Models.TaskItem",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.TaskController",
+    "Method": "UpdateTask",
+    "RelativePath": "Task/update",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "task",
+        "Type": "API.Models.TaskItem",
         "IsRequired": true
       }
     ],

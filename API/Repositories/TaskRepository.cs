@@ -2,6 +2,7 @@
 using API.Interfaces;
 using API.Models;
 using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Repositories
@@ -17,7 +18,17 @@ namespace API.Repositories
 
         public async Task<TaskItem> CreateTaskAsync(TaskItem task)
         {
-            throw new NotImplementedException();
+            if (task == null)
+            {
+                return null;
+            }
+            _context.Tasks.Add(task);
+            var result = await _context.SaveChangesAsync();
+            if (result > 0)
+            {
+                return task;
+            }
+            return null;
         }
 
         public async Task<bool> DeleteTaskAsync(int id)
@@ -28,6 +39,10 @@ namespace API.Repositories
         public async Task<IEnumerable<TaskItem>> GetAllTasksAsync()
         {
             var tasks = await _context.Tasks.ToListAsync();
+            if (tasks == null || tasks.Count == 0)
+            {
+                return null;
+            }
             return tasks;
         }
 
@@ -35,39 +50,40 @@ namespace API.Repositories
         {
             if (id <= 0)
             {
-                throw new ArgumentException("Invalid task ID");
+                return null;
             }
             var task = await _context.Tasks.FirstOrDefaultAsync(task => task.Id == id);
             if (task == null)
             {
-                throw new KeyNotFoundException($"Task with ID {id} not found");
+                return null;
             }
             return task;
         }
 
-        public async Task<bool> UpdateTaskAsync(TaskItem task)
+        public async Task<TaskItem> UpdateTaskAsync(TaskItem task)
         {
             if (task == null)
             {
-                return false;
+                return null;
             }
 
             var existingTask = await GetTaskByIdAsync(task.Id);
             if (existingTask == null)
             {
-                return false;
+                return null;
             }
-            existingTask.Name = task.Name;
-            existingTask.Description = task.Description;
-            existingTask.DueDate = task.DueDate;
-            existingTask.IsCompleted = task.IsCompleted;
-            existingTask.Priority = task.Priority;
-            existingTask.CreatedAt = task.CreatedAt;
-            existingTask.UserId = task.UserId;
 
-            _context.Tasks.Update(existingTask);
+            _context.Entry(existingTask).CurrentValues.SetValues(task);
+
             var result = await _context.SaveChangesAsync();
-            return result > 0;
+            if (result > 0)
+            {
+                return task;
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }
