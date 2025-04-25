@@ -1,4 +1,6 @@
-﻿namespace API.Models
+﻿using API.Enums;
+
+namespace API.Models
 {
     public class Task
     {
@@ -8,7 +10,7 @@
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public DateTime DueDate { get; set; }
         public bool IsCompleted { get; set; } = false;
-        public int Priority { get; set; } = 0;
+        public Priority Priority { get; set; }
         public int UserId { get; set; }
     }
 }
