@@ -1,11 +1,13 @@
-﻿namespace API.Interfaces
+﻿using API.Models;
+
+namespace API.Interfaces
 {
     public interface ITaskRepository
     {
-        Task<IEnumerable<Models.Task>> GetAllTasksAsync();
-        Task<Models.Task> GetTaskByIdAsync(int id);
-        Task<Models.Task> CreateTaskAsync(Models.Task task);
-        Task<bool> UpdateTaskAsync(Models.Task task);
+        Task<IEnumerable<TaskItem>> GetAllTasksAsync();
+        Task<TaskItem> GetTaskByIdAsync(int id);
+        Task<TaskItem> CreateTaskAsync(TaskItem task);
+        Task<bool> UpdateTaskAsync(TaskItem task);
         Task<bool> DeleteTaskAsync(int id);
         //Task<bool> SaveChangesAsync();
     }
