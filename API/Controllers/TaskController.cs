@@ -58,5 +58,16 @@ namespace API.Controllers
 
             return CreatedAtAction(nameof(GetTaskById), new { id = task.Id }, updatedTask);
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteTask(int id)
+        {
+            var result = await _taskRepository.DeleteTaskAsync(id);
+            if (!result)
+            {
+                return NotFound(new { message = $"Could not delete task with ID {id}, not found" });
+            }
+            return NoContent();
+        }
     }
 }

@@ -31,11 +31,6 @@ namespace API.Repositories
             return null;
         }
 
-        public async Task<bool> DeleteTaskAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task<IEnumerable<TaskItem>> GetAllTasksAsync()
         {
             var tasks = await _context.Tasks.ToListAsync();
@@ -84,6 +79,18 @@ namespace API.Repositories
             {
                 return null;
             }
+        }
+
+        public async Task<bool> DeleteTaskAsync(int id)
+        {
+            var task = await GetTaskByIdAsync(id);
+            if (task == null)
+            {
+                return false;
+            }
+            _context.Tasks.Remove(task);
+            var result = await _context.SaveChangesAsync();
+            return result > 0;
         }
     }
 }
