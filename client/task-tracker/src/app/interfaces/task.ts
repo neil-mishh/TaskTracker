@@ -1,10 +1,10 @@
 export interface Task {
     Id: number;
-    Name: string;
-    Description: string;
-    CreatedAt: string;
-    DueDate: string;
-    IsCompleted: boolean;
-    Priority: string;
-    UserId: number;
+    name: string;
+    description: string;
+    createdAt: string;
+    dueDate: string;
+    isCompleted: boolean;
+    priority: string;
+    userId: number;
 }
