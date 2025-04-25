@@ -294,6 +294,5 @@ C:\Users\neilm\Desktop\TaskTracker\API\bin\Debug\net8.0\runtimes\win\lib\net7.0\
 C:\Users\neilm\Desktop\TaskTracker\API\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Drawing.Common.dll
 C:\Users\neilm\Desktop\TaskTracker\API\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\neilm\Desktop\TaskTracker\API\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
-C:\Users\neilm\Desktop\TaskTracker\API\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\neilm\Desktop\TaskTracker\API\obj\Debug\net8.0\API.RazorAssemblyInfo.cache
 C:\Users\neilm\Desktop\TaskTracker\API\obj\Debug\net8.0\API.RazorAssemblyInfo.cs

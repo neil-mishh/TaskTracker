@@ -1,1 +1,8 @@
-<p>task-list works!</p>
+<h1>List of all Tasks!</h1>
+
+<ul>
+    @for (task of tasks; track task) {
+        <li> {{ task }} </li>
+    }
+    
+</ul>
