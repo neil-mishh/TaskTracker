@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Task } from '../../interfaces/task';
 import { TaskService } from '../../services/task.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms'
+import { subscribe } from 'diagnostics_channel';
 
 @Component({
   selector: 'app-task-form',
@@ -12,7 +13,7 @@ import { FormsModule } from '@angular/forms'
   templateUrl: './task-form.component.html',
   styleUrl: './task-form.component.css'
 })
-export class TaskFormComponent {
+export class TaskFormComponent implements OnInit{
   newTask: Task = {
     id: 0,
     name: '',
@@ -24,7 +25,20 @@ export class TaskFormComponent {
     userId: 0
   }
 
-  constructor(private taskService: TaskService, private router: Router){}
+  constructor(
+    private taskService: TaskService, 
+    private router: Router,
+    private route: ActivatedRoute
+  ){}
+
+  ngOnInit(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.taskService.getTaskByID(+id).subscribe({
+        next: task => this.newTask = task
+      })
+    }
+  }
 
   onSubmit(){
     this.taskService.createTask(this.newTask).subscribe({

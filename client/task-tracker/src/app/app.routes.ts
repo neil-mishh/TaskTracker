@@ -4,5 +4,5 @@ import { TaskFormComponent } from './modules/task-form/task-form.component';
 
 export const routes: Routes = [
     {path: 'tasks', component: TaskListComponent},
-    {path: 'edit', component: TaskFormComponent}
+    {path: 'edit/:id', component: TaskFormComponent}
 ];
