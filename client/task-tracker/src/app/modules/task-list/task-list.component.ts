@@ -35,7 +35,7 @@ export class TaskListComponent implements OnInit{
 
   editTask(){
     if(this.selectedTask != null){
-      this.router.navigate(['/edit', this.selectedTask.id]);
+      this.router.navigate(['/tasks/edit', this.selectedTask.id]);
     }
   }
 }

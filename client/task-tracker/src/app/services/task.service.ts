@@ -16,7 +16,11 @@ export class TaskService {
   }
 
   createTask(task: Task){
-    return this.http.post(this.baseURL + 'update', task)
+    return this.http.post(this.baseURL + 'task/create', task)
+  }
+
+  updateTask(task: Task){
+    return this.http.post(this.baseURL + 'task/update', task)
   }
 
   getTaskByID(id: number): Observable<Task> {

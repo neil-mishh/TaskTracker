@@ -36,12 +36,12 @@ export class TaskFormComponent implements OnInit{
     if (id) {
       this.taskService.getTaskByID(+id).subscribe({
         next: task => this.newTask = task
-      })
+      });
     }
   }
 
   onSubmit(){
-    this.taskService.createTask(this.newTask).subscribe({
+    this.taskService.updateTask(this.newTask).subscribe({
       next: () => {
         alert('Task created successfully');
         this.router.navigate(['/tasks']);
