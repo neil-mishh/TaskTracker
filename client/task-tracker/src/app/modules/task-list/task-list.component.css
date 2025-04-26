@@ -1,0 +1,69 @@
+.task-list-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2.5% 0;
+  background-color: #f4f4f4;
+  min-height: 100%;
+}
+
+.task-list-box {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 900px;
+}
+
+/* Table styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  font-weight: 600;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* Row hover and selected styles */
+tr:hover {
+  background-color: #f0f8ff;
+  cursor: pointer;
+}
+
+.selected-row {
+  background-color: #d0ebff;
+  font-weight: bold;
+  border-left: 4px solid #007bff;
+}
+
+/* Button styling */
+.task-list-box button {
+  margin-top: 1.5rem;
+  padding: 0.75rem 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.task-list-box button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.task-list-box button:hover:not(:disabled) {
+  background-color: #0056b3;
+}

@@ -1,1 +1,42 @@
-<p>task-form works!</p>
+<div class="form-container">
+    <form class="task-form">
+      <div class="form-group">
+        <label for="name">Task Name</label>
+        <input type="text" id="name" [(ngModel)]="newTask.name" name="name" required />
+      </div>
+  
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea id="description" [(ngModel)]="newTask.description" name="description"></textarea>
+      </div>
+  
+      <div class="form-group">
+        <label for="dueDate">Due Date</label>
+        <input type="datetime-local" id="dueDate" [(ngModel)]="newTask.dueDate" name="dueDate" required />
+      </div>
+  
+      <div class="form-group">
+        <label for="priority">Priority</label>
+        <select id="priority" [(ngModel)]="newTask.priority" name="priority">
+          <option [value]="1">Low</option>
+          <option [value]="2">Medium</option>
+          <option [value]="3">High</option>
+        </select>
+      </div>
+  
+      <div class="form-group flex items-center space-x-2">
+        <label for="isCompleted" class="text-gray-700">Completed</label>
+        <input 
+          id="isCompleted" 
+          type="checkbox" 
+          [(ngModel)]="newTask.isCompleted" 
+          name="isCompleted" 
+          class="form-checkbox h-5 w-5 text-blue-600"
+        />
+      </div>
+      
+  
+      <button type="submit">Save Task</button>
+    </form>
+  </div>
+  
