@@ -24,7 +24,7 @@ export class TaskFormComponent implements OnInit{
     priority: '',
     userId: 0
   }
-
+  isEditMode: boolean = false;
   constructor(
     private taskService: TaskService, 
     private router: Router,
@@ -34,6 +34,7 @@ export class TaskFormComponent implements OnInit{
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
+      this.isEditMode = true;
       this.taskService.getTaskByID(+id).subscribe({
         next: task => this.newTask = task
       });
@@ -41,12 +42,24 @@ export class TaskFormComponent implements OnInit{
   }
 
   onSubmit(){
-    this.taskService.updateTask(this.newTask).subscribe({
-      next: () => {
-        alert('Task created successfully');
-        this.router.navigate(['/tasks']);
-      },
-      error: err => console.error('Failed to create task: ' + err)
-    });
+    if(this.isEditMode){
+      this.taskService.updateTask(this.newTask).subscribe({
+        next: () => {
+          alert('Task updated successfully');
+          this.router.navigate(['/tasks']);
+        },
+        error: err => console.error('Failed to update task: ' + err)
+      });
+    }
+    else{
+      this.taskService.createTask(this.newTask).subscribe({
+        next: () => {
+          alert('Task created successfully');
+          this.router.navigate(['/tasks']);
+        },
+        error: err => console.error('Failed to create task' + err)
+      });
+    }
+    
   }
 }
