@@ -7,5 +7,5 @@ export const routes: Routes = [
     {path: 'tasks', component: TaskListComponent},
     {path: 'tasks/new', component: TaskFormComponent},
     {path: 'tasks/edit/:id', component: TaskFormComponent},
-    {path: 'home', component: HomeComponent}
+    {path: '', component: HomeComponent}
 ];
